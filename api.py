@@ -22,7 +22,7 @@ class M2MError(Exception):
 class M2M(object):
     """M2M EarthExplorer API."""
 
-    def __init__(self, username=None, password=None, token=None, version="stable"):
+    def __init__(self, username="gilisaacgabriel", password=None, token="jyKbPA1fc@w4BdFb0kEGjSny8H66aee@xdLQofk9DGV!hQh3OHwddOOchvqi2Rj5", version="stable"):
         self.serviceUrl = M2M_ENDPOINT.format(version)
         self.apiKey = None
         self.authenticate(username, password, token)
@@ -31,7 +31,7 @@ class M2M(object):
         self.permissions = self.sendRequest('permissions')
 
     def authenticate(self, username, password, token):
-        config_path = '~/.config/m2m_api'
+        config_path = './'
         config_path = Path(osp.expandvars(config_path)).expanduser().resolve()
         config_file = config_path / 'config.json'
         try:
@@ -52,8 +52,8 @@ class M2M(object):
             self.login(password)
         elif token != None:
             config = {
-                'username': username,
-                'token': token
+                "username": "gilisaacgabriel",
+                "token": "jyKbPA1fc@w4BdFb0kEGjSny8H66aee@xdLQofk9DGV!hQh3OHwddOOchvqi2Rj5"
             }
             json.dump(config, open(config_file, 'w'), indent=4, separators=(',', ': '))
             self.loginToken(token)
